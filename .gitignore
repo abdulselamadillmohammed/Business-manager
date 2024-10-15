@@ -1,0 +1,22 @@
+# For Django
+*.pyc
+__pycache__/
+db.sqlite3
+/media
+/staticfiles
+.env
+
+# Virtual environment
+venv/
+
+# For Node.js (Vite)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.parcel-cache/
+dist/
+.vite/
+
+# MacOS-specific
+.DS_Store
