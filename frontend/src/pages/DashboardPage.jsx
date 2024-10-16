@@ -4,8 +4,10 @@ import styles from "../assets/css/dashboardPage.module.css";
 export default function DashboardPage() {
   return (
     <div className={styles.dashboardPageContainer}>
-      <WelcomeBoard />
-      <RemindersBoard />
+      <div className={styles.welcomeBoardAndReminderBoardContainer}>
+        <WelcomeBoard />
+        <RemindersBoard />
+      </div>
     </div>
   );
 }
