@@ -4,7 +4,7 @@ export default function RemindersBoard() {
   return (
     <>
       <div className={styles.remindersBoardContainer}>
-        <div className="reminderTextAndButtonContainer">
+        <div className={styles.reminderTextAndButtonContainer}>
           <p className={styles.reminderTitleText}>Reminders</p>
 
           <div className={styles.addReminderButtonContainer}>
