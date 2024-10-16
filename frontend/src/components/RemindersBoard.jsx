@@ -6,6 +6,7 @@ export default function RemindersBoard() {
       <div className={styles.remindersBoardContainer}>
         <div className="reminderTextAndButtonContainer">
           <p className={styles.reminderTitleText}>Reminders</p>
+
           <div className={styles.addReminderButtonContainer}>
             <img src={addLogo} alt="Add icon" className={styles.addLogo} />
             <p className={styles.addReminderButtonText}>Add reminder</p>
