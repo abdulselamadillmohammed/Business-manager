@@ -12,6 +12,7 @@
   width: 264px;
   height: 120px;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   padding: 20px 12px;
@@ -19,7 +20,12 @@
   border-radius: 16px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
+}
+.revenueCardContainerTopSection {
+  display: flex;
   column-gap: 12px;
+  width: 240px;
+  height: 50px;
 }
 .iconContainer {
   background-color: rgba(192, 239, 176, 0.5);
@@ -27,13 +33,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 48px;
   width: 48px;
   height: 48px;
   box-sizing: border-box;
+  margin: 0;
 }
 .revenueCardIcon {
   width: 36px;
   height: 24px;
+  box-sizing: border-box;
 }
 .revenueCardTextContainer {
   width: 116px;
@@ -65,4 +74,50 @@
   color: #002200;
   margin: 0;
   padding: 0;
+}
+.revenueCardPercentageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 4px;
+  align-self: flex-end;
+  margin-bottom: 5px;
+}
+.revenueCardPercentage {
+  width: 27px;
+  height: 11px;
+  border-radius: 50px;
+  color: #002200;
+  font-size: 8px;
+  font-family: var(--Futura);
+  border: 1px solid #002200;
+  padding: 1px 4px;
+}
+
+.revenueCardArrowUp {
+  width: 14px;
+  height: 14px;
+  object-fit: cover;
+}
+.revenueCardContainerBottomSection {
+  width: 70px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  margin-top: 25px;
+  margin-left: 10px;
+}
+
+.revenueCardViewMore {
+  font-family: var(--Futura);
+  font-weight: 100;
+  font-size: 12px;
+  color: #0066ff;
+  cursor: pointer;
+}
+.revenueCardViewMore:hover {
+  font-weight: 300;
+  text-decoration: underline;
 }
