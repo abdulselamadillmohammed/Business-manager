@@ -10,7 +10,7 @@ export default function DashboardRevenue() {
             <img
               className={styles.revenueCardIcon}
               src={logo}
-              alt="revenueCardIcon"
+              alt="Revenue card icon"
             />
           </div>
 
@@ -18,6 +18,7 @@ export default function DashboardRevenue() {
             <p className={styles.revenueCardSupportingText}>REVENUE</p>
             <p className={styles.revenueCardMainText}>$4,571.32</p>
           </div>
+
           <div className={styles.revenueCardPercentageContainer}>
             <p className={styles.revenueCardPercentage}>19.2 %</p>
             {/* Make state conditional based on percentage */}

@@ -8,7 +8,9 @@
   --white: #fff;
   --Futura: "Futura", sans-serif;
 }
-.dashboardRevenueContainer {
+.dashboardExpensesContainer {
+  width: 264px;
+  height: 120px;
   width: 264px;
   height: 120px;
   display: flex;
@@ -20,15 +22,17 @@
   border-radius: 16px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
+  overflow-y: hidden;
 }
-.revenueCardContainerTopSection {
+.expensesCardContainerTopSection {
   display: flex;
   column-gap: 12px;
   width: 240px;
   height: 50px;
 }
+
 .iconContainer {
-  background-color: rgba(192, 239, 176, 0.5);
+  background-color: #ffdad6;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -39,12 +43,14 @@
   box-sizing: border-box;
   margin: 0;
 }
-.revenueCardIcon {
-  width: 36px;
-  height: 24px;
+.expensesCardIcon {
+  width: 35px;
+  height: 35px;
+  margin-left: -2px;
   box-sizing: border-box;
 }
-.revenueCardTextContainer {
+
+.expensesCardTextContainer {
   width: 116px;
   height: 48px;
   display: flex;
@@ -52,7 +58,7 @@
   align-items: flex-start;
   justify-content: center;
 }
-.revenueCardSupportingText {
+.expensesCardSupportingText {
   width: 116px;
   height: 14px;
   color: rgba(0, 0, 0, 0.6);
@@ -65,62 +71,66 @@
   margin: 0;
   padding: 0;
 }
-.revenueCardMainText {
+.expensesCardMainText {
   font-family: var(--Futura);
   width: 116px;
   height: 32px;
   font-size: 24px;
   font-weight: 400;
-  color: #002200;
+  color: #410002;
   margin: 0;
   padding: 0;
 }
-.revenueCardPercentageContainer {
+.expensesCardPercentageContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   column-gap: 4px;
   align-self: flex-end;
   margin-bottom: 5px;
+  margin-left: -10px;
 }
-.revenueCardPercentage {
+.expensesCardPercentage {
   width: 27px;
   height: 11px;
   border-radius: 50px;
-  color: #002200;
+  color: #410002;
   font-size: 8px;
   font-family: var(--Futura);
-  border: 1px solid #002200;
+  border: 1px solid #410002;
   padding: 1px 4px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.revenueCardArrowUp {
+.expensesCardArrowDown {
   width: 14px;
   height: 14px;
   object-fit: cover;
 }
-.revenueCardContainerBottomSection {
-  width: 70px;
-  height: 16px;
+
+.expensesCardContainerBottomSection {
+  width: 264px;
+  height: 30px;
+  border-radius: 0px 0px 16px 16px;
+  background-color: rgba(60, 60, 60, 0.1);
+  margin-left: -12px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  align-self: flex-end;
-  margin-top: 25px;
-  margin-left: 10px;
+  justify-content: flex-end;
+  margin-top: 22px;
 }
-
-.revenueCardViewMore {
+.expensesCardViewMore {
   font-family: var(--Futura);
   font-weight: 100;
   font-size: 12px;
   color: #0066ff;
   cursor: pointer;
+  background-color: none;
+  padding-right: 12px;
 }
-.revenueCardViewMore:hover {
+.expensesCardViewMore:hover {
   font-weight: 300;
   text-decoration: underline;
 }

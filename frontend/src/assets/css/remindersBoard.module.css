@@ -18,6 +18,7 @@
   flex-direction: column;
   justify-content: flex-start;
   row-gap: 34px;
+  box-sizing: border-box;
 }
 .reminderTitleText {
   font-family: var(--Futura);
