@@ -1,0 +1,111 @@
+@font-face {
+  font-family: "Futura";
+  src: url("../fonts/Futura.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --white: #fff;
+  --Futura: "Futura", sans-serif;
+}
+.transactiontemplateContainer {
+  width: 936px;
+  height: 70px;
+  background-color: #f6f8fc;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.iconContainer {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #bcebee;
+  border-radius: 8px;
+  margin-left: 14px;
+}
+.transactionLogo {
+  width: 28px;
+  height: 28px;
+}
+.transactionDescriptionContainer {
+  width: 162px;
+  height: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+  margin-left: 12px;
+}
+.transactionDescriptionHeaderText {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: var(--Futura);
+  font-size: 12px;
+  font-weight: 500;
+}
+.transactionDescriptionSupportingText {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: var(--Futura);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 2px;
+}
+.transactionType {
+  margin: 0;
+  padding: 0;
+  height: 16px;
+  width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: var(--Futura);
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 175px;
+}
+.transactionPrice {
+  margin: 0;
+  padding: 0;
+  height: 16px;
+  width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: var(--Futura);
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 182px;
+}
+.editTransaction {
+  margin: 0;
+  padding: 0;
+  height: 24px;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: var(--Futura);
+  color: #1976d2;
+  font-size: 16px;
+  font-weight: 100;
+  cursor: pointer;
+  margin-left: 175px;
+}
+.editTransaction:hover {
+  text-decoration: underline;
+}

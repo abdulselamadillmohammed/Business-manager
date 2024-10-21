@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "Futura";
+  src: url("../fonts/Futura.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --white: #fff;
+  --Futura: "Futura", sans-serif;
+}
+.dashboardTransactionsContainer {
+  width: 936px;
+  height: 302px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.dashboardTransactionsHeadingText {
+  display: flex;
+  justify-content: flex-start;
+  width: 125px;
+  height: 16px;
+  align-items: center;
+  font-family: var(--Futura);
+  font-size: 12px;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+  margin-left: 12px;
+  margin-bottom: 4px;
+}
+.dashboardTransactionsNavbar {
+  width: 936px;
+  height: 22px;
+  background-color: rgba(130, 130, 130, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.dashboardTransactionsNavbarElement {
+  text-decoration: none;
+  font-family: var(--Futura);
+  font-size: 12px;
+  font-weight: 300;
+}
+.dashboardTransactionsNavbarElement:nth-child(1) {
+  margin-left: 73px;
+}
+.dashboardTransactionsNavbarElement:nth-child(2) {
+  margin-left: 212px;
+}
+.dashboardTransactionsNavbarElement:nth-child(3) {
+  margin-left: 210px;
+}
+.transactionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 936px;
+  height: 252px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+}
+.transactionContainer > :nth-child(even) {
+  background-color: #fff;
+}
+
+.transactionContainer > * {
+  flex-shrink: 0; /* Prevents the components inside from shrinking */
+}
