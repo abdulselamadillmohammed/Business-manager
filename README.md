@@ -1,42 +1,47 @@
-# WaterApp
-
-**WaterApp** is a mobile application designed to help users track their daily water intake and monitor hydration levels over time. The app is built using **React Native** (with Expo) for the front end, a **FastAPI** backend connected to a **MongoDB** database, and also includes an optional **Django** backend for flexibility.
+# Business Manager
+(In progress)
+**Business Manager** is a web application designed to help users track their expenses and revenue streams, providing insightful visualizations to monitor financial performance. The app is built using **React** for the front end and **Django** for the back end. It also includes features like **Redux** for state management, **TanStack Query** for client-side caching, and **Redis** for backend caching.
 
 ## Features
 
-- **Track Water Intake**: Users can log and monitor their daily water intake.
-- **Cross-platform Support**: Built with React Native, so it runs on both Android and iOS devices.
-- **Multiple Backends**:
-  - **FastAPI + MongoDB**: A fast, lightweight API for handling user data with MongoDB as the primary database.
-  - **Django**: An alternative backend option using Django for those who prefer a more full-featured, relational database setup.
+- **Expense and Revenue Tracking**: Log and manage your expenses and income over time.
+- **Visualize Data with Graphs**: Generate real-time graphs for expenses and revenue streams using **Chart.js**.
+- **State Management**: Powered by **Redux** for predictable state management in the frontend.
+- **Client-Side Caching**: Uses **TanStack Query (React Query)** to efficiently cache and manage API data.
+- **Backend Caching**: Utilizes **Redis** to improve backend performance by caching frequently requested data.
+- **Django REST Framework**: API endpoints built with Django REST Framework.
+- **MySQL**: Database for storing user data, transactions, and other records.
 
 ## Tech Stack
 
-- **Frontend**: React Native (Expo)
-- **Backend 1**: FastAPI (with MongoDB for storage)
-- **Backend 2**: Django (optional, using PostgreSQL or MySQL)
-- **State Management**: Redux (or any other preferred state management library)
-- **Client-Side Caching**: TanStack Query (React Query) for API caching
+- **Frontend**: React
+- **Backend**: Django + Django REST Framework
+- **Database**: MySQL
+- **State Management**: Redux
+- **Client-Side Caching**: TanStack Query (React Query)
+- **Backend Caching**: Redis
+- **Data Visualization**: Chart.js
+- **Design**: Figma (for UI/UX design)
 
 ## Installation
 
 ### Prerequisites
 
-- **Node.js** and **npm** installed for React Native development
-- **Python 3.9+** for the FastAPI and Django backends
-- **MongoDB** installed locally or available through a cloud service like MongoDB Atlas
-- **PostgreSQL/MySQL** (if you plan to use the Django backend)
-
+- **Node.js** and **npm** for the React frontend.
+- **Python 3.9+** for the Django backend.
+- **MySQL** for database setup.
+- **Redis** for caching (optional but recommended).
+  
 ### Steps to Run Locally
 
 #### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/waterapp.git
-cd waterapp
+git clone https://github.com/yourusername/business-manager.git
+cd business-manager
 ```
 
-#### 2. Set Up the Frontend (Expo)
+#### 2. Set Up the Frontend (React)
 
 1. **Navigate to the frontend directory**:
    ```bash
@@ -46,17 +51,17 @@ cd waterapp
    ```bash
    npm install
    ```
-3. **Run the app in Expo**:
+3. **Run the development server**:
    ```bash
    npm start
    ```
-   This will start the Expo development server, and you can scan the QR code in the Expo Go app on your mobile device to test the app.
+   This will start the React development server at `http://localhost:5173`.
 
-#### 3. Set Up the FastAPI Backend
+#### 3. Set Up the Backend (Django)
 
 1. **Navigate to the backend directory**:
    ```bash
-   cd ../backend_fastapi
+   cd ../backend
    ```
 2. **Create and activate a virtual environment**:
    ```bash
@@ -67,45 +72,37 @@ cd waterapp
    ```bash
    pip install -r requirements.txt
    ```
-4. **Run the FastAPI server**:
-   ```bash
-   uvicorn main:app --reload
-   ```
-   The API will be available at `http://127.0.0.1:8000`.
+4. **Configure MySQL**:
+   - Make sure you have MySQL installed and running.
+   - Update the `DATABASES` setting in `backend/settings.py` with your MySQL credentials.
 
-#### 4. Optional: Set Up the Django Backend
-
-1. **Navigate to the Django backend directory**:
-   ```bash
-   cd ../backend
-   ```
-2. **Create and activate a virtual environment**:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate
-   ```
-3. **Install the dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. **Apply migrations**:
+5. **Apply migrations**:
    ```bash
    python manage.py migrate
    ```
-5. **Run the Django server**:
+
+6. **Run the Django server**:
    ```bash
    python manage.py runserver
    ```
 
-## API Endpoints
+The backend will now be available at `http://localhost:8000`.
 
-### FastAPI Endpoints
-- `GET /water`: Retrieve the current water intake records.
-- `POST /water`: Log a new water intake entry.
-- `DELETE /water/{id}`: Delete a water intake entry by its ID.
+#### 4. Set Up Redis (Optional)
 
-### Django Endpoints (Optional)
-- Similar to the FastAPI endpoints, but using Django Rest Framework for API handling.
+1. **Start Redis**:
+   If you have Redis installed locally, you can start the Redis server:
+
+   ```bash
+   redis-server
+   ```
+
+2. **Configure Redis in Django**:
+   Update the Redis caching configuration in `settings.py` if not already done.
+
+## Data Visualization
+
+- **Chart.js** is used to display graphs for expenses and revenue streams. Users can view daily, weekly, or monthly reports.
 
 ## License
 
