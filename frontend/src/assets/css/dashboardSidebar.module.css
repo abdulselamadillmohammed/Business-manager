@@ -1,10 +1,91 @@
+@font-face {
+  font-family: "FuturaNormal";
+  src: url("../fonts/FuturaNormal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --white: #fff;
+  --navigationGreen: rgba(24, 108, 98, 0.8);
+  --nagivationGreenHover: rgba(24, 108, 98, 0.4);
+  --FuturaNormal: "FuturaNormal", sans-serif;
+}
 .dashboardSidebarContainer {
   width: 240px;
-  height: 832px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   background-color: #fff;
   box-sizing: border-box;
+  position: relative;
+}
+.dashboardCompanyLogoContainer {
+  width: 240px;
+  height: 80px;
+  background-color: #787878;
+}
+.dashboardProfileContainer {
+  width: 240px;
+  height: 52px;
+  border-top: 2px solid rgba(0, 0, 0, 0.5);
+}
+.dashboardNavigationItemContainer {
+  width: 240px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 18px 16px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+.dashboardNavigationItemContainer:hover {
+  background-color: var(--nagivationGreenHover);
+}
+.dashboardNavigationItemContainer:hover .naviagtionItemText {
+  color: white;
+}
+.dashboardNavigationItemContainerActive {
+  width: 240px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 18px 16px;
+  text-decoration: none;
+  box-sizing: border-box;
+  background-color: var(--navigationGreen);
+}
+
+.naviagtionItemIcon {
+  width: 32px;
+  height: 32px;
+  margin-right: 15px;
+}
+.naviagtionItemText {
+  font-family: var(--FuturaNormal);
+  color: #828282;
+  font-size: 22px;
+  font-weight: 100;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.naviagtionItemTextActive {
+  font-family: var(--FuturaNormal);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 100;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.dashboardProfileContainer {
+  position: absolute;
+  bottom: 0;
 }

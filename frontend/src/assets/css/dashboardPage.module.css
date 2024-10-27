@@ -1,4 +1,8 @@
 .dashboardPageContainer {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: scroll;
   background-color: #f9f9ff;
   display: flex;
   column-gap: 52px;
