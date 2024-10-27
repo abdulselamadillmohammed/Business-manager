@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "Futura";
+  src: url("../fonts/Futura.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FuturaNormal";
+  src: url("../fonts/FuturaNormal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --white: #fff;
+  --Futura: "Futura", sans-serif;
+  --FuturaNormal: "FuturaNormal", sans-serif;
+}
+.transactionsPageContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  column-gap: 58px;
+}
+.transactionsContainer {
+  flex-direction: column;
+}
+.transactionsTitleSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.transactionsTitleText {
+  font-family: var(--Futura);
+  font-size: 32px;
+}
+.addTransactionContainer {
+  width: 170px;
+  height: 40px;
+  background-color: rgba(0, 0, 32, 0.12);
+  border: 1px solid #000020;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 100px;
+  column-gap: 8px;
+}
+.addTransactionContainer:hover {
+  background-color: rgba(0, 0, 32, 0.3);
+}
+.addTransactionIcon {
+  width: 18px;
+  height: 18px;
+}
+.addTransactionText {
+  font-family: var(--Futura);
+  font-size: 14px;
+  color: #000020;
+}

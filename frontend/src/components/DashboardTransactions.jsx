@@ -1,10 +1,24 @@
 import styles from "../assets/css/dashboardTransactions.module.css";
 import TransactionTemplate from "./TransactionTemplate";
+import { useLocation } from "react-router-dom";
 export default function DashboardTransactions() {
+  const location = useLocation();
   return (
     <>
-      <div className={styles.dashboardTransactionsContainer}>
-        <p className={styles.dashboardTransactionsHeadingText}>
+      <div
+        className={
+          location.pathname === "/dashboard"
+            ? styles.dashboardTransactionsContainer
+            : styles.transactionsPageTransactionsContainer
+        }
+      >
+        <p
+          className={
+            location.pathname === "/dashboard"
+              ? styles.dashboardTransactionsHeadingText
+              : styles.dashboardTransactionsHeadingTextInactive
+          }
+        >
           Recent transactions
         </p>
         <ul className={styles.dashboardTransactionsNavbar}>
@@ -14,7 +28,20 @@ export default function DashboardTransactions() {
           <li className={styles.dashboardTransactionsNavbarElement}>Type</li>
           <li className={styles.dashboardTransactionsNavbarElement}>Price</li>
         </ul>
-        <div className={styles.transactionContainer}>
+        <div
+          className={
+            location.pathname === "/dashboard"
+              ? styles.transactionContainer
+              : styles.transactionsPageTransactionContainer
+          }
+        >
+          {/* Loop via props */}
+          <TransactionTemplate />
+          <TransactionTemplate />
+          <TransactionTemplate />
+          <TransactionTemplate />
+          <TransactionTemplate />
+          <TransactionTemplate />
           <TransactionTemplate />
           <TransactionTemplate />
           <TransactionTemplate />

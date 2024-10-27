@@ -10,7 +10,16 @@
 }
 .dashboardTransactionsContainer {
   width: 936px;
-  height: 302px;
+  height: 272px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.transactionsPageTransactionsContainer {
+  width: 936px;
+  height: 702px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -30,6 +39,9 @@
   padding: 0;
   margin-left: 12px;
   margin-bottom: 4px;
+}
+.dashboardTransactionsHeadingTextInactive {
+  display: none;
 }
 .dashboardTransactionsNavbar {
   width: 936px;
@@ -76,5 +88,24 @@
 }
 
 .transactionContainer > * {
+  flex-shrink: 0; /* Prevents the components inside from shrinking */
+}
+.transactionsPageTransactionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 936px;
+  height: 711px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+}
+.transactionsPageTransactionContainer > :nth-child(even) {
+  background-color: #fff;
+}
+
+.transactionsPageTransactionContainer > * {
   flex-shrink: 0; /* Prevents the components inside from shrinking */
 }
