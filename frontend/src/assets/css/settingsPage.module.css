@@ -1,0 +1,202 @@
+@font-face {
+  font-family: "Futura";
+  src: url("../fonts/Futura.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FuturaNormal";
+  src: url("../fonts/FuturaNormal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --white: #fff;
+  --Futura: "Futura", sans-serif;
+  --FuturaNormal: "FuturaNormal", sans-serif;
+}
+.settingsPageContainer {
+  column-gap: 26px;
+  display: flex;
+}
+.accountEditingSection {
+  display: flex;
+  box-sizing: border-box;
+  margin-top: 30px;
+  column-gap: 22px;
+}
+
+.accountEditingButtonSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 352px;
+  height: 722px;
+  row-gap: 36px;
+  box-sizing: border-box;
+}
+.changeProfileContainer {
+  width: 352px;
+  height: 444px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid rgba(176, 176, 176, 0.5);
+  padding: 24px 0px;
+  border-top-left-radius: 16px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.settingsPageProfilePicture {
+  width: 300px;
+  height: 300px;
+}
+.changeProfilePicture {
+  width: 290px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #091e28;
+  font-family: var(--FuturaNormal);
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 400;
+  border: 2px solid #091e28;
+  cursor: pointer;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.changeProfilePicture:hover {
+  background-color: rgba(10, 31, 41, 0.3);
+}
+.premiumAndPasswordContainer {
+  width: 352px;
+  height: 144px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  row-gap: 16px;
+  box-sizing: border-box;
+}
+.upgradeToPremiumSection,
+.changePasswordSection {
+  width: 352px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 60px;
+  padding-top: 6px;
+  padding-top: 6px;
+  column-gap: 22px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+}
+.upgradeToPremiumSection:hover,
+.changePasswordSection:hover {
+  background-color: rgba(41, 150, 200, 0.1);
+}
+
+.upgradeToPremiumIcon {
+  width: 28px;
+  height: 22px;
+}
+.changePasswordIcon {
+  width: 22px;
+  height: 26px;
+  margin-left: 6px;
+}
+
+.upgradeToPremiumText,
+.changePasswordText {
+  font-family: var(--Futura);
+  font-size: 18px;
+  font-weight: 400;
+  text-align: start;
+}
+.deleteAccountButton {
+  width: 352px;
+  height: 64px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 16px;
+  background-color: #ffdad6;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 64px;
+
+  column-gap: 22px;
+  box-sizing: border-box;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.deleteAccountButton:hover {
+  background-color: #fbc2bb;
+}
+.settingsPageDeleteIcon {
+  width: 32px;
+  height: 32px;
+  margin-left: -4px;
+}
+.deleteAccountText {
+  font-family: var(--Futura);
+  font-size: 20px;
+  font-weight: 400;
+  color: #410002;
+}
+.accountEditingTypingSection {
+  width: 642px;
+  height: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  padding-left: 32px;
+  padding-top: 32px;
+  box-sizing: border-box;
+}
+.editAccountDetailsTitle {
+  font-family: var(--FuturaNormal);
+  font-size: 32px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 32px;
+}
+.changeDetailSection {
+  width: 578px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 24px;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+}
+.changeDetailLabel {
+  font-family: var(--FuturaNormal);
+  font-size: 24px;
+  font-weight: 400;
+}
+input {
+  width: 358px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  font-family: var(--FuturaNormal);
+  font-size: 16px;
+  border-radius: 8px;
+}
