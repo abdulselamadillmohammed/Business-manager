@@ -4,11 +4,18 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "Futura";
+  src: url("../fonts/Futura.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 :root {
   --white: #fff;
   --navigationGreen: rgba(24, 108, 98, 0.8);
   --nagivationGreenHover: rgba(24, 108, 98, 0.4);
   --FuturaNormal: "FuturaNormal", sans-serif;
+  --Futura: "Futura", sans-serif;
 }
 .dashboardSidebarContainer {
   width: 240px;
@@ -24,12 +31,34 @@
 .dashboardCompanyLogoContainer {
   width: 240px;
   height: 80px;
-  background-color: #787878;
+}
+.sidebarCompanyLogo {
+  width: 108px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  object-fit: cover;
+  padding-left: 30px;
+  padding-top: 20px;
 }
 .dashboardProfileContainer {
   width: 240px;
   height: 52px;
   border-top: 2px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 24px;
+  column-gap: 12px;
+  box-sizing: border-box;
+}
+.dashboardProfileImage {
+  width: 32px;
+  height: 32px;
+}
+.dashboardProfileText {
+  font-family: var(--Futura);
 }
 .dashboardNavigationItemContainer {
   width: 240px;

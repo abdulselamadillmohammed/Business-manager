@@ -14,6 +14,9 @@ import settingsActive from "../assets/icons/settingsIconActive.png";
 import logoutInactive from "../assets/icons/logoutIconNormal.png";
 import logoutActive from "../assets/icons/logoutIconActive.png";
 
+import sampleCompanyImage from "../assets/images/sampleCompanyImage.png";
+import sampleProfilePicture from "../assets/images/sampleProfilePicture.png";
+
 export default function DashboardSidebar() {
   const location = useLocation();
   const [isHovered, setIsHovered] = useState(false);
@@ -22,7 +25,11 @@ export default function DashboardSidebar() {
     <>
       <div className={styles.dashboardSidebarContainer}>
         <div className={styles.dashboardCompanyLogoContainer}>
-          <img src="" alt="Company image" />
+          <img
+            className={styles.sidebarCompanyLogo}
+            src={sampleCompanyImage}
+            alt="Company image"
+          />
         </div>
 
         <div className={styles.dashboardNavigationContainer}>
@@ -152,10 +159,10 @@ export default function DashboardSidebar() {
         <div className={styles.dashboardProfileContainer}>
           <img
             className={styles.dashboardProfileImage}
-            src=""
-            alt="Upload picture"
+            src={sampleProfilePicture}
+            alt="Profile picture"
           />
-          <p className={styles.dashboardProfileText}></p>
+          <p className={styles.dashboardProfileText}>Admin user</p>
         </div>
       </div>
     </>
