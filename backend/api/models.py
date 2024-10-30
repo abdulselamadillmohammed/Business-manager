@@ -23,23 +23,23 @@ class TransactionType(models.TextChoices):
     expense = "E",_("Expense")
     revenue = "R", _("Revenue")
 
-class IconChoices(models.TextChoices):
+class TransactionIconChoices(models.TextChoices):
     SHOPPING = "shopping", _("Shopping")
     FOOD = "food", _("Food")
     TRANSPORT = "transport", _("Transport")
     SALARY = "salary", _("Salary")
 
-class Transactions(models.Model):
-    user = models.ForeignKey(CustomUser,on_delete=models.SET_NULL, null=True)
+class Transaction(models.Model):
+    user = models.ForeignKey(CustomUser,on_delete=models.CASCADE, null=True)
     transaction_icon = models.CharField(
         max_length=20,
-        choices=IconChoices.choices,
-        default=IconChoices.SHOPPING,
+        choices=TransactionIconChoices.choices,
+        default=TransactionIconChoices.SHOPPING,
     )
     transaction_title = models.CharField(max_length=200)
     transaction_detail = models.TextField()
     transaction_type = models.CharField(max_length=1,choices=TransactionType.choices)
-    transaction_price = models.IntegerField()
+    transaction_price = models.DecimalField(max_digits=7, decimal_places=2)
 
     modified_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -52,3 +52,15 @@ class Transactions(models.Model):
             models.Index(fields=["transaction_title"], name="transaction_title_index")
         ]
         ordering = ["-created_at"]
+
+class ReminderIconChoices(models.TextChoices):
+    DATE = "date", _("Date")
+    CARD = "card", _("Card")
+    MAIL = "maik", _("Mail")
+    NOTIFICATION = "notification", _("Notification")
+
+class Reminder(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    event_title = models.CharField(max_length=100)
+    event_date = models.DateTimeField()
+    event_icon = models.CharField(max_length=20, choices=ReminderIconChoices)
