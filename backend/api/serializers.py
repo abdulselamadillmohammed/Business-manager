@@ -25,7 +25,7 @@ class TransactionsSerializer(serializers.ModelSerializer):
 class ReminderSerializer(serializers.ModelSerializer):
     user = CustomUserSerializer(read_only=True)
     class Meta: 
-        model = Transaction
+        model = Reminder
         fields = [
             "user",
             "event_title",

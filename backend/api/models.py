@@ -64,3 +64,6 @@ class Reminder(models.Model):
     event_title = models.CharField(max_length=100)
     event_date = models.DateTimeField()
     event_icon = models.CharField(max_length=20, choices=ReminderIconChoices)
+
+    def __str__(self):
+        return f'{self.event_title}'
