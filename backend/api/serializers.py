@@ -28,7 +28,14 @@ class ReminderSerializer(serializers.ModelSerializer):
         model = Reminder
         fields = [
             "user",
-            "event_title",
-            "event_date",
-            "event_icon",
+            "reminder_title",
+            "reminder_date",
+            "reminder_icon",
         ]
+
+    def create(self, validated_data):
+        # Check if the user is empty or invalid
+        user = validated_data.get("user")
+        if user is None or user.is_anonymous:
+            validated_data["user"] = None  # Or handle it as you need
+        return super().create(validated_data)

@@ -9,3 +9,7 @@ export const getAllTransactions = async () => {
 export const getAllReminders = async () => {
   return (await axiosInstance.get("allReminders/")).data;
 };
+
+export const createReminder = async (data) => {
+  await axiosInstance.post("createReminder/", data);
+};

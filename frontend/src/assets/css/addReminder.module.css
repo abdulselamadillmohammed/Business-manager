@@ -1,0 +1,135 @@
+@font-face {
+  font-family: "Futura";
+  src: url("../fonts/Futura.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FuturaNormal";
+  src: url("../fonts/FuturaNormal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --white: #fff;
+  --Futura: "Futura", sans-serif;
+  --FuturaNormal: "FuturaNormal", sans-serif;
+}
+.addReminderContainer {
+  width: 244px;
+  height: 364px;
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding-top: 20px;
+  position: absolute;
+  top: 154px;
+  right: 418px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+.addReminderMainText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--Futura);
+  width: 86px;
+  height: 20px;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+.addReminderForm {
+  width: 200px;
+  height: 274px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.addReminderLabel {
+  font-family: var(--FuturaNormal);
+  padding-left: 10px;
+  padding-bottom: 4px;
+  color: rgb(0, 0, 0, 0.8);
+  font-size: 12px;
+}
+.addReminderInput {
+  margin-top: 6px;
+  width: 198px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: var(--FuturaNormal);
+  font-size: 14px;
+  padding-left: 12px;
+  border-radius: 4px;
+  margin-bottom: 4;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}
+.addReminderIconsContainer {
+  margin: 0;
+  padding: 0;
+  margin-top: 6px;
+  width: 198px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  font-family: var(--FuturaNormal);
+  column-gap: 8px;
+}
+.reminderIconContainer {
+  width: 32px;
+  height: 32px;
+  background-color: #d1e4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.reminderIconContainer:hover {
+  background-color: #82b6ff;
+}
+.reminderIconContainerFocus {
+  width: 32px;
+  height: 32px;
+  background-color: #69a5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.addReminderButton {
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin-top: 12px;
+  width: 82px;
+  height: 30px;
+  font-family: var(--FuturaNormal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(208, 188, 255, 0.12);
+  color: #000020;
+  border-radius: 8px;
+  border: 1px solid #000020;
+  cursor: pointer;
+  font-size: 14px;
+  box-sizing: border-box;
+  padding: 6px 0px;
+}
+.addReminderButton:hover {
+  background-color: rgba(208, 188, 255, 0.3);
+}

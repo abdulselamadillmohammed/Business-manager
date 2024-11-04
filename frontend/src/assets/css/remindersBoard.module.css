@@ -19,6 +19,7 @@
   justify-content: flex-start;
   row-gap: 34px;
   box-sizing: border-box;
+  overflow-y: hidden;
 }
 .reminderTitleText {
   font-family: var(--Futura);
@@ -60,4 +61,17 @@
   font-size: 14px;
   font-weight: 400;
   color: #000020;
+}
+
+.allRemindersContainer {
+  width: 360px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-radius: 0px 0px 16px 16px;
 }

@@ -21,15 +21,16 @@ export default function RemindersBoard() {
           </div>
         </div>
         {/* CREATE A MAPPING FUNCTION AND WRAP THE COMPONENT IN OVERFLOW-Y SCROLL */}
-
-        {data.map((reminder, index) => (
-          <Reminder
-            key={index}
-            event_icon={reminder?.event_icon}
-            event_title={reminder?.event_title}
-            event_date={reminder?.event_date}
-          />
-        ))}
+        <div className={styles.allRemindersContainer}>
+          {data.map((reminder, index) => (
+            <Reminder
+              key={index}
+              reminder_icon={reminder?.reminder_icon}
+              reminder_title={reminder?.reminder_title}
+              reminder_date={reminder?.reminder_date}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

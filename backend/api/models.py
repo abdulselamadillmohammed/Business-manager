@@ -56,14 +56,14 @@ class Transaction(models.Model):
 class ReminderIconChoices(models.TextChoices):
     DATE = "date", _("Date")
     CARD = "card", _("Card")
-    MAIL = "maik", _("Mail")
+    MAIL = "mail", _("Mail")
     NOTIFICATION = "notification", _("Notification")
 
 class Reminder(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
-    event_title = models.CharField(max_length=100)
-    event_date = models.DateTimeField()
-    event_icon = models.CharField(max_length=20, choices=ReminderIconChoices)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
+    reminder_title = models.CharField(max_length=100)
+    reminder_date = models.DateTimeField()
+    reminder_icon = models.CharField(max_length=20, choices=ReminderIconChoices)
 
     def __str__(self):
         return f'{self.event_title}'

@@ -14,14 +14,23 @@ class TransactionsViews(APIView):
         return Response(serializer.data,status=status.HTTP_200_OK)
 
     def post(self, request):
-        serializer = TransactionsSerializer(request.data)
+        serializer = TransactionsSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class RemindersView(APIView):
+class RemindersListView(APIView):
     def get(self, request):
         reminders = Reminder.objects.all()
         serializer = ReminderSerializer(reminders, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+class RemindersCreateView(APIView):
+    def post(self, request):
+        serializer = ReminderSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

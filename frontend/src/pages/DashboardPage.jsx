@@ -5,6 +5,7 @@ import DashboardRevenue from "../components/DashboardRevenue";
 import DashboardExpenses from "../components/DashboardExpenses";
 import DashboardTransactions from "../components/DashboardTransactions";
 import DashboardSidebar from "../components/dashboardSidebar";
+import AddReminder from "../components/AddReminder";
 export default function DashboardPage() {
   return (
     <div className={styles.dashboardPageContainer}>
@@ -23,11 +24,12 @@ export default function DashboardPage() {
                 <DashboardExpenses />
               </div>
             </div>
+            <AddReminder />
             <RemindersBoard />
           </div>
         </div>
         <div className={styles.dashboardPageBottomSection}>
-          <DashboardTransactions />
+          <DashboardTransactions className={styles.addReminderOnDashboard} />
         </div>
       </div>
     </div>
