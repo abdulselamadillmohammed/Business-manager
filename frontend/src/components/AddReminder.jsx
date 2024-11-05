@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "../assets/css/addReminder.module.css";
 import { useCreateReminder } from "../services/mutations";
+import { useSelector, useDispatch } from "react-redux";
+import { setIsAddingReminder } from "../features/exampleSlice";
+import dateIcon from "../assets/icons/dateIcon.png";
+import cardIcon from "../assets/icons/cardIcon.png";
+import mailIcon from "../assets/icons/mailIcon.png";
+import notificationIcon from "../assets/icons/notificationIcon.png";
 
 export default function AddReminder() {
+  const dispatch = useDispatch();
+  const isAddingReminder = useSelector(
+    (state) => state.example.isAddingReminder
+  );
+  const containerRef = useRef(null);
+  const stopAddingReminder = () => {
+    dispatch(setIsAddingReminder(false));
+  };
+
   const reminderMutation = useCreateReminder();
   const [formData, setFormData] = useState({
     user: "",
@@ -12,6 +27,21 @@ export default function AddReminder() {
     reminder_icon: "",
   });
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        dispatch(setIsAddingReminder(false)); // Set to false if clicked outside
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside); // Clean up on unmount
+    };
+  }, [dispatch]);
   const handleFormDataChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -21,12 +51,30 @@ export default function AddReminder() {
   };
 
   const handleFormSubmit = () => {
-    reminderMutation.mutate(formData);
+    // Combine date and time into a DateTime string
+    const combinedDateTime = `${formData.reminder_date}T${formData.reminder_time}`;
+
+    // Update formData with the combined datetime
+    const updatedFormData = {
+      ...formData,
+      reminder_date: combinedDateTime,
+    };
+
+    // Send the updated formData with combined DateTime
+    reminderMutation.mutate(updatedFormData);
+    stopAddingReminder();
   };
 
   return (
     <>
-      <div className={styles.addReminderContainer}>
+      <div
+        className={
+          isAddingReminder
+            ? styles.addReminderContainer
+            : styles.addReminderContainerOff
+        }
+        ref={containerRef}
+      >
         <section className={styles.addReminderMainText}>Reminder</section>
 
         <form className={styles.addReminderForm}>
@@ -90,7 +138,13 @@ export default function AddReminder() {
                     reminder_icon: "date",
                   }))
                 }
-              ></div>
+              >
+                <img
+                  src={dateIcon}
+                  alt="Date icon"
+                  className={styles.addReminderIconImage}
+                />
+              </div>
               <div
                 className={
                   formData.reminder_icon === "card"
@@ -103,7 +157,13 @@ export default function AddReminder() {
                     reminder_icon: "card",
                   }))
                 }
-              ></div>
+              >
+                <img
+                  src={cardIcon}
+                  alt="Card icon"
+                  className={styles.addReminderIconImage}
+                />
+              </div>
               <div
                 className={
                   formData.reminder_icon === "mail"
@@ -116,7 +176,13 @@ export default function AddReminder() {
                     reminder_icon: "mail",
                   }))
                 }
-              ></div>
+              >
+                <img
+                  src={mailIcon}
+                  alt="Mail icon"
+                  className={styles.addReminderIconImage}
+                />
+              </div>
               <div
                 className={
                   formData.reminder_icon === "notification"
@@ -129,7 +195,13 @@ export default function AddReminder() {
                     reminder_icon: "notification",
                   }))
                 }
-              ></div>
+              >
+                <img
+                  src={notificationIcon}
+                  alt="Notification icon"
+                  className={styles.addReminderIconImage}
+                />
+              </div>
             </div>
           </section>
 

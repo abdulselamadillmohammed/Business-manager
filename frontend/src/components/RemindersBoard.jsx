@@ -2,7 +2,24 @@ import styles from "../assets/css/remindersBoard.module.css";
 import addLogo from "../assets/images/addIcon.png";
 import Reminder from "./Reminder";
 import { useAllReminders } from "../services/queries";
+import AddReminder from "./AddReminder";
+import { useSelector, useDispatch } from "react-redux";
+import { setIsAddingReminder } from "../features/exampleSlice";
+
 export default function RemindersBoard() {
+  const isAddingReminder = useSelector((state) => {
+    state.example.isAddingReminder;
+  });
+  const dispatch = useDispatch();
+
+  const startAddingReminder = () => {
+    dispatch(setIsAddingReminder(true));
+  };
+
+  const stopAddingReminder = () => {
+    dispatch(setIsAddingReminder(false));
+  };
+
   const { data, isLoading, isError } = useAllReminders();
   console.log(data);
   return isLoading ? (
@@ -15,7 +32,10 @@ export default function RemindersBoard() {
         <div className={styles.reminderTextAndButtonContainer}>
           <p className={styles.reminderTitleText}>Reminders</p>
 
-          <div className={styles.addReminderButtonContainer}>
+          <div
+            className={styles.addReminderButtonContainer}
+            onClick={startAddingReminder}
+          >
             <img src={addLogo} alt="Add icon" className={styles.addLogo} />
             <p className={styles.addReminderButtonText}>Add reminder</p>
           </div>
@@ -31,6 +51,7 @@ export default function RemindersBoard() {
             />
           ))}
         </div>
+        <AddReminder />
       </div>
     </>
   );

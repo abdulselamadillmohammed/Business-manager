@@ -64,6 +64,9 @@ class Reminder(models.Model):
     reminder_title = models.CharField(max_length=100)
     reminder_date = models.DateTimeField()
     reminder_icon = models.CharField(max_length=20, choices=ReminderIconChoices)
-
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     def __str__(self):
-        return f'{self.event_title}'
+        return f'{self.reminder_title}'
+    
+    class Meta:
+        ordering=["-created_at"]

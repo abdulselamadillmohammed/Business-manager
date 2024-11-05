@@ -5,10 +5,14 @@ import DashboardRevenue from "../components/DashboardRevenue";
 import DashboardExpenses from "../components/DashboardExpenses";
 import DashboardTransactions from "../components/DashboardTransactions";
 import DashboardSidebar from "../components/dashboardSidebar";
-import AddReminder from "../components/AddReminder";
 export default function DashboardPage() {
   return (
-    <div className={styles.dashboardPageContainer}>
+    <div
+      className={styles.dashboardPageContainer}
+      onClick={() => {
+        console.log("Clicking on dashboard");
+      }}
+    >
       <div className={styles.dashboardPageLeftSideContainer}>
         <DashboardSidebar />
       </div>
@@ -24,7 +28,7 @@ export default function DashboardPage() {
                 <DashboardExpenses />
               </div>
             </div>
-            <AddReminder />
+
             <RemindersBoard />
           </div>
         </div>
