@@ -1,0 +1,18 @@
+# General ignores
+.git/
+.gitignore
+.dockerignore
+README.md
+
+# Python/Django ignores
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+venv/
+db.sqlite3            # If using SQLite for development
+*.env                 # Exclude environment variable files
+
+# Node/Vite ignores
+node_modules/         # Re-installed inside the Docker container
+dist/                 # Rebuilt in the Docker container

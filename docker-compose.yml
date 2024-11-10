@@ -1,6 +1,13 @@
-version: 3
+version: "3"
 
 services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+
   backend:
     build:
       context: ./backend
@@ -12,17 +19,18 @@ services:
       - DATABASE_USER=postgres
       - DATABASE_PASSWORD=postgres
       - DATABASE_HOST=db
-      - DATABASE_PORT=5434
+      - DATABASE_PORT=5432
 
     depends_on:
       - db
+
   db:
     image: postgres:17.0-alpine3.20
 
     environment:
-      - POSTGES_DB=business_manager
-      - POSTGES_USER=postgres
-      - POSTGES_PASSWORD=postgres
+      - POSTGRES_DB=business_manager
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
 
     ports:
       - "5434:5432"

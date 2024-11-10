@@ -4,8 +4,9 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requiremets.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python3","manage.py","runserver"]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+# SHELL ["/bin/zsh", "-c"]

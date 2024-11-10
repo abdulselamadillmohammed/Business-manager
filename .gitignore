@@ -1,15 +1,16 @@
-# For Django
+# Django/Python ignores
 *.pyc
 __pycache__/
 db.sqlite3
-/media
-/staticfiles
-.env
+/media/
+/staticfiles/
+/.env
+.env.*                 # Ignore any environment file variations (e.g., .env.local)
 
 # Virtual environment
 venv/
 
-# For Node.js (Vite)
+# Node.js (Vite) ignores
 node_modules/
 npm-debug.log
 yarn-debug.log
@@ -18,8 +19,11 @@ yarn-error.log
 dist/
 .vite/
 
-# MacOS-specific
+# macOS-specific files
 .DS_Store
 
-# vscode folder
-.vscode
+# IDE/Editor-specific ignores
+.vscode/
+.idea/                 # For JetBrains IDEs like PyCharm
+*.sublime-project
+*.sublime-workspace
