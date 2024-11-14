@@ -4,7 +4,7 @@ import styles from "../assets/css/dashboardPage.module.css";
 import DashboardRevenue from "../components/DashboardRevenue";
 import DashboardExpenses from "../components/DashboardExpenses";
 import DashboardTransactions from "../components/DashboardTransactions";
-import DashboardSidebar from "../components/dashboardSidebar";
+import DashboardSidebar from "../components/DashboardSidebar";
 export default function DashboardPage() {
   return (
     <div

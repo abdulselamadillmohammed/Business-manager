@@ -1,4 +1,4 @@
-import DashboardSidebar from "../components/dashboardSidebar";
+import DashboardSidebar from "../components/DashboardSidebar";
 import styles from "../assets/css/transactionsPage.module.css";
 import DashboardTransactions from "../components/DashboardTransactions";
 import addTransactionIcon from "../assets/icons/addTransactionIcon.png";

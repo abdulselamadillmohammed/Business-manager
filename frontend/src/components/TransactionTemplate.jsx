@@ -1,6 +1,12 @@
 import styles from "../assets/css/transactionTemplate.module.css";
 import transactionLogo from "../assets/icons/waterDropletIcon.png";
-export default function TransactionTemplate() {
+export default function TransactionTemplate({
+  transaction_icon,
+  transaction_title,
+  transaction_detail,
+  transaction_type,
+  transaction_price,
+}) {
   return (
     <>
       <div className={styles.transactiontemplateContainer}>
@@ -17,12 +23,20 @@ export default function TransactionTemplate() {
         </div>
         <div className={styles.transactionDescriptionContainer}>
           <p className={styles.transactionDescriptionHeaderText}>
-            Toronto Hydro
+            {transaction_title.length < 25
+              ? transaction_title
+              : `${transaction_title.slice(0, 25)}...`}
           </p>
-          <p className={styles.transactionDescriptionSupportingText}>N/A</p>
+          <p className={styles.transactionDescriptionSupportingText}>
+            {transaction_detail.length < 25
+              ? transaction_detail
+              : `${transaction_detail.slice(0, 25)}...`}
+          </p>
         </div>
-        <p className={styles.transactionType}>Expense</p>
-        <p className={styles.transactionPrice}>$24.61</p>
+        <p className={styles.transactionType}>
+          {transaction_type === "E" ? "Expense" : "Revenue"}
+        </p>
+        <p className={styles.transactionPrice}>{`$${transaction_price}`}</p>
         <p className={styles.editTransaction}>Edit</p>
       </div>
     </>

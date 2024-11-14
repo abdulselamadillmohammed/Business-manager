@@ -1,4 +1,4 @@
-import DashboardSidebar from "../components/dashboardSidebar";
+import DashboardSidebar from "../components/DashboardSidebar";
 import styles from "../assets/css/settingsPage.module.css";
 import sampleProfilePicture from "../assets/images/sampleProfilePicture.png";
 import upgradeToPremiumIcon from "../assets/icons/upgradeToPremiumIcon.png";
