@@ -1,8 +1,10 @@
 import styles from "../assets/css/addTransaction.module.css";
+
 import shoppingTransaction from "../assets/icons/shoppingTransaction.png";
 import utilitiesIcon from "../assets/icons/utilitiesTransaction.png";
 import transportationIcon from "../assets/icons/transportationTransaction.png";
 import salaryTransaction from "../assets/icons/salaryTransaction.png";
+
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsAddingTranaction } from "../features/exampleSlice";

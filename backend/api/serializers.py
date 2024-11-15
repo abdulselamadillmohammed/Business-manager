@@ -1,10 +1,26 @@
 from rest_framework import serializers
 from .models import Transaction, CustomUser, Reminder
 
+from rest_framework import serializers
+from .models import CustomUser
+
+# Serializer for retrieving user details (used in views for getting user info)
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ["id", "username", "first_name", "last_name", "profile_picture"]
+
+# Serializer for user signup (used in the signup view)
+class CustomUserSignupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'password', 'profile_picture']
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        # Create a user with the hashed password
+        user = CustomUser.objects.create_user(**validated_data)
+        return user
 
 
 class TransactionsSerializer(serializers.ModelSerializer):
