@@ -6,6 +6,7 @@ const exampleSlice = createSlice({
     data: null,
     isLoading: false,
     isAddingReminder: false,
+    isAddingTransaction: false,
   },
   reducers: {
     setData: (state, action) => {
@@ -17,9 +18,16 @@ const exampleSlice = createSlice({
     setIsAddingReminder: (state, action) => {
       state.isAddingReminder = action.payload;
     },
+    setIsAddingTranaction: (state, action) => {
+      state.isAddingTransaction = action.payload;
+    },
   },
 });
 
-export const { setData, setLoading, setIsAddingReminder } =
-  exampleSlice.actions;
+export const {
+  setData,
+  setLoading,
+  setIsAddingReminder,
+  setIsAddingTranaction,
+} = exampleSlice.actions;
 export default exampleSlice.reducer;

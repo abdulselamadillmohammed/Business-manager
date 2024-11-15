@@ -8,7 +8,6 @@ from datetime import datetime
 
 # Create your views here.
 
-
 class TransactionsListView(APIView):
     def get(self, request):
         transactions = Transaction.objects.all()
@@ -18,6 +17,7 @@ class TransactionsListView(APIView):
 
 class TransactionsCreateView(APIView):
     def post(self, request):
+        print("Request Data:", request.data) 
         serializer = TransactionsSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)

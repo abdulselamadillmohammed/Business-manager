@@ -3,15 +3,20 @@ import TransactionTemplate from "./TransactionTemplate";
 import { useLocation } from "react-router-dom";
 import { useAllTransactions } from "../services/queries";
 export default function DashboardTransactions() {
-  const { data: listTransactions, isLoading, isError } = useAllTransactions();
-  console.log(listTransactions);
-  if (isLoading) {
-    return "loading";
-  }
-  if (isError) {
-    return "ERROR ";
-  }
+  const {
+    data: listTransactions = [],
+    isLoading,
+    isError,
+  } = useAllTransactions();
   const location = useLocation();
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error loading transactions.</p>;
+  }
   return (
     <>
       <div
@@ -44,8 +49,9 @@ export default function DashboardTransactions() {
               : styles.transactionsPageTransactionContainer
           }
         >
-          {listTransactions.map((transaction) => (
+          {listTransactions.map((transaction, index) => (
             <TransactionTemplate
+              key={index}
               transaction_icon={transaction.transaction_icon}
               transaction_title={transaction.transaction_title}
               transaction_detail={transaction.transaction_detail}

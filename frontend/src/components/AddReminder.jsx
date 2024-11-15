@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "../assets/css/addReminder.module.css";
 import { useCreateReminder } from "../services/mutations";
+
 import { useSelector, useDispatch } from "react-redux";
 import { setIsAddingReminder } from "../features/exampleSlice";
+
 import dateIcon from "../assets/icons/dateIcon.png";
 import cardIcon from "../assets/icons/cardIcon.png";
 import mailIcon from "../assets/icons/mailIcon.png";
@@ -10,6 +12,7 @@ import notificationIcon from "../assets/icons/notificationIcon.png";
 
 export default function AddReminder() {
   const dispatch = useDispatch();
+
   const isAddingReminder = useSelector(
     (state) => state.example.isAddingReminder
   );
@@ -42,6 +45,7 @@ export default function AddReminder() {
       document.removeEventListener("mousedown", handleClickOutside); // Clean up on unmount
     };
   }, [dispatch]);
+
   const handleFormDataChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({

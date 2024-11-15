@@ -25,7 +25,7 @@ class TransactionType(models.TextChoices):
 
 class TransactionIconChoices(models.TextChoices):
     SHOPPING = "shopping", _("Shopping")
-    FOOD = "food", _("Food")
+    UTILITIES = "utilities", _("Utilities")
     TRANSPORT = "transport", _("Transport")
     SALARY = "salary", _("Salary")
 
