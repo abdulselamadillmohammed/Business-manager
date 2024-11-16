@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "Futura";
+  src: url("../fonts/Futura.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FuturaNormal";
+  src: url("../fonts/FuturaNormal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --white: #fff;
+  --Futura: "Futura", sans-serif;
+  --FuturaNormal: "FuturaNormal", sans-serif;
+}
+.expensesPageContainer {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  max-height: 100vh;
+}
+.expensesPageMainSectionContainer {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 48px;
+  padding-left: 24px;
+}
+.heading {
+  font-family: var(--FuturaNormal);
+  font-size: 32px;
+  text-align: start;
+}
+
+.controlsContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.chartTypeSelector,
+.timeRangeSelector {
+  display: flex;
+  gap: 10px;
+}
+
+.activeButton {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.inactiveButton {
+  background-color: #f1f1f1;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.chartContainer {
+  margin-top: 20px;
+}

@@ -119,6 +119,7 @@ function SignupPage({ setToken }) {
             accept="image/*"
             className={styles.fileInput}
           />
+
           <span className={styles.fileInputButton}></span>
           <p
             className={

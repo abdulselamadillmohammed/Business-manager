@@ -5,7 +5,12 @@ import DashboardRevenue from "../components/DashboardRevenue";
 import DashboardExpenses from "../components/DashboardExpenses";
 import DashboardTransactions from "../components/DashboardTransactions";
 import DashboardSidebar from "../components/DashboardSidebar";
+import { useCurrentUser } from "../services/queries";
 export default function DashboardPage() {
+  const token = localStorage.getItem("accessToken");
+  const { data: user, isLoading, isError } = useCurrentUser(token);
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Error fetching user data</p>;
   return (
     <div
       className={styles.dashboardPageContainer}
@@ -14,7 +19,10 @@ export default function DashboardPage() {
       }}
     >
       <div className={styles.dashboardPageLeftSideContainer}>
-        <DashboardSidebar />
+        <DashboardSidebar
+          profilePicture={`http://127.0.0.1:8000${user.profile_picture}`}
+          username={user.username}
+        />
       </div>
       <div className={styles.dashboardPageRightSideContainer}>
         <div className={styles.dashboardPageTopSection}>
@@ -22,7 +30,7 @@ export default function DashboardPage() {
             <div
               className={styles.welcomeBoardAndReveueAndExpensesCardsContainer}
             >
-              <WelcomeBoard />
+              <WelcomeBoard username={user.username} />
               <div className={styles.revenueAndExpensesContainer}>
                 <DashboardRevenue />
                 <DashboardExpenses />

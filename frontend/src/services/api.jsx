@@ -3,8 +3,9 @@ import axios from "axios";
 const BASE_URL = "http://127.0.0.1:8000/api/";
 const axiosInstance = axios.create({ baseURL: BASE_URL });
 
-// JWT-specific setup
+// JWT-specific setup: Automatically attach token to requests
 const getAccessToken = () => localStorage.getItem("accessToken");
+
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = getAccessToken();
@@ -16,7 +17,45 @@ axiosInstance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Functions for transactions and reminders
+// Refresh access token on 401 errors
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      try {
+        await refreshAccessToken();
+        return axiosInstance(originalRequest); // Retry the original request
+      } catch (err) {
+        console.error("Token refresh failed", err);
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        window.location.href = "/login"; // Redirect to login
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+
+// API functions
+export const getUserDetails = async () => {
+  const response = await axiosInstance.get("current-user/");
+  return response.data;
+};
+
+export const updateUserDetails = async (data) => {
+  const response = await axiosInstance.patch("update-current-user/", data, {
+    headers: {
+      "Content-Type": "multipart/form-data", // Explicitly set for FormData
+    },
+  });
+  return response.data;
+};
+
 export const getAllTransactions = async () => {
   return (await axiosInstance.get("allTransactions/")).data;
 };

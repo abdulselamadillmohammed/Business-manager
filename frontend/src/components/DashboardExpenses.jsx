@@ -1,7 +1,9 @@
 import styles from "../assets/css/dashboardExpenses.module.css";
 import logo from "../assets/icons/expensesCardIcon.png";
 import downArrow from "../assets/icons/expensesCardDownArrow.png";
+import { useNavigate } from "react-router-dom";
 export default function DashboardExpenses() {
+  const navigate = useNavigate();
   return (
     <>
       <div className={styles.dashboardExpensesContainer}>
@@ -31,7 +33,14 @@ export default function DashboardExpenses() {
         </div>
 
         <div className={styles.expensesCardContainerBottomSection}>
-          <p className={styles.expensesCardViewMore}>View more &gt;</p>
+          <p
+            className={styles.expensesCardViewMore}
+            onClick={() => {
+              navigate("/expenses");
+            }}
+          >
+            View more &gt;
+          </p>
         </div>
       </div>
     </>

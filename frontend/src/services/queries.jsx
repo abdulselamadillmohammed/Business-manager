@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllTransactions, getAllReminders } from "./api";
+import { getAllTransactions, getAllReminders, getUserDetails } from "./api";
 
 export function useAllTransactions() {
   return useQuery({
@@ -13,3 +13,11 @@ export function useAllReminders() {
     queryFn: getAllReminders,
   });
 }
+
+export const useCurrentUser = (token) => {
+  return useQuery({
+    queryKey: ["currentUser"],
+    queryFn: () => getUserDetails(token),
+    enabled: !!token,
+  });
+};

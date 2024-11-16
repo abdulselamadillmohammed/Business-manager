@@ -12,7 +12,7 @@ from .models import CustomUser
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ["id", "username", "email", "first_name", "last_name", "profile_picture"]
+        fields = ["username", "email", "profile_picture"]
         extra_kwargs = {
             'email': {'required': True},  # Ensure email is required when updating
         }

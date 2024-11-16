@@ -9,8 +9,13 @@ import dateIcon from "../assets/icons/dateIcon.png";
 import cardIcon from "../assets/icons/cardIcon.png";
 import mailIcon from "../assets/icons/mailIcon.png";
 import notificationIcon from "../assets/icons/notificationIcon.png";
+import { useCurrentUser } from "../services/queries";
 
 export default function AddReminder() {
+  const token = localStorage.getItem("accessToken");
+  const { data: user, isLoading, isError } = useCurrentUser(token);
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Error fetching user data</p>;
   const dispatch = useDispatch();
 
   const isAddingReminder = useSelector(
@@ -23,7 +28,7 @@ export default function AddReminder() {
 
   const reminderMutation = useCreateReminder();
   const [formData, setFormData] = useState({
-    user: "",
+    user: user.username,
     reminder_title: "",
     reminder_date: "",
     reminder_time: "",

@@ -1,5 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createReminder, createTransaction, signup, login } from "./api";
+import {
+  createReminder,
+  createTransaction,
+  signup,
+  login,
+  updateUserDetails,
+} from "./api";
 
 // Mutation for creating a reminder
 export function useCreateReminder() {
@@ -38,6 +44,22 @@ export function useCreateTransaction() {
     },
   });
 }
+
+export const useUpdateUserDetails = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (data, token) => updateUserDetails(data, token),
+    onSuccess: () => {
+      console.log("User details updated successfully!");
+    },
+    onError: (error) => {
+      console.error(
+        "Error updating user details:",
+        error.response?.data || error.message
+      );
+    },
+  });
+};
 
 // Mutation for user signup
 export const useSignup = () => {

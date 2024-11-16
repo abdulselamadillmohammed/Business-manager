@@ -7,6 +7,8 @@ import TransactionsPage from "./pages/TransactionsPage";
 import SettingsPage from "./pages/SettingsPage";
 import LogoutPage from "./pages/LogoutPage";
 import Homepage from "./pages/Homepage";
+import ExpensesPage from "./pages/ExpensesPage";
+import RevenuePage from "./pages/RevenuePage";
 import "./index.css";
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
       <Route path="/transactions" element={<TransactionsPage />} />
       <Route path="/settings" element={<SettingsPage />} />
       <Route path="/logout" element={<LogoutPage />} />
+      <Route path="/expenses" element={<ExpensesPage />} />
+      <Route path="/revenue" element={<RevenuePage />} />
     </Routes>
   );
 }

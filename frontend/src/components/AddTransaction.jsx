@@ -9,8 +9,13 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsAddingTranaction } from "../features/exampleSlice";
 import { useCreateTransaction } from "../services/mutations";
+import { useCurrentUser } from "../services/queries";
 
 export default function AddTransaction() {
+  const token = localStorage.getItem("accessToken");
+  const { data: user, isLoading, isError } = useCurrentUser(token);
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Error fetching user data</p>;
   const formRef = useRef(null);
   const dispatch = useDispatch();
   const isAddingTransaction = useSelector(
@@ -32,7 +37,7 @@ export default function AddTransaction() {
     dispatch(setIsAddingTranaction(false));
   };
   const [formData, setFormData] = useState({
-    user: "",
+    user: user.username,
     transaction_icon: "",
     transaction_title: "",
     transaction_detail: "",
