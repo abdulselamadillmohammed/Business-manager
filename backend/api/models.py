@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 # Create your models here.
 class CustomUser(AbstractUser):
     profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
+    email = models.EmailField(unique=True, blank=True, null=True)
+
     class Meta: 
         indexes = [
             models.Index(

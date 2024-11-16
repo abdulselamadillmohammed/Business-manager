@@ -1,0 +1,185 @@
+@font-face {
+  font-family: "Futura";
+  src: url("../fonts/Futura.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FuturaNormal";
+  src: url("../fonts/FuturaNormal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --white: #fff;
+  --Futura: "Futura", sans-serif;
+  --FuturaNormal: "FuturaNormal", sans-serif;
+}
+
+.homePageContainer {
+  min-height: 100vh;
+  background-color: #f9f9ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 60px;
+}
+.homepageNavbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 40px;
+  padding-top: 12px;
+}
+.supportingTextContainer {
+  display: flex;
+  column-gap: 40px;
+}
+.navBarLoginAndSignupContainer {
+  width: 160px;
+  display: flex;
+  justify-self: flex-start;
+  column-gap: 40px;
+  margin-right: 24px;
+}
+.spacefiller {
+  width: 160px;
+  margin-left: 24px;
+}
+.homepageNavbarSupportingText {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--FuturaNormal);
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-size: 12px;
+}
+.homepageNavbarSupportingText:hover {
+  text-decoration: underline;
+}
+.homepageLoginButton,
+.homepageSignupnButton {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--FuturaNormal);
+  color: #002022;
+  cursor: pointer;
+  font-size: 12px;
+}
+.homepageLoginButton:hover {
+  text-decoration: underline;
+}
+.homepageSignupnButton {
+  width: 74px;
+  height: 30px;
+  background-color: #bcebee;
+  border-radius: 4px;
+}
+.homepageSignupnButton:hover {
+  background-color: #96ecf3;
+}
+.homepageTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.homepageMainText {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--Futura);
+  font-size: 98px;
+}
+.homepageSupportingText {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--Futura);
+  font-size: 32px;
+  color: #1d192b;
+  padding: 0px 24px;
+  box-sizing: border-box;
+}
+.homepageCallToActionContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 48px;
+  margin-top: -30px;
+}
+.firstCallToAction,
+.secondCallToAction {
+  font-family: var(--FuturaNormal);
+  background-color: #002022;
+  color: #fff;
+  width: 258px;
+  height: 44px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #002022;
+}
+.secondCallToAction {
+  font-family: var(--Futura);
+  background-color: #ffffff00;
+  color: #002022;
+  font-weight: 500;
+}
+.videoContainer {
+  background-color: #121630;
+  width: 880px;
+  height: 494px;
+  border-radius: 40px;
+}
+
+.homepageFooter {
+  width: 100%;
+  height: 404px;
+  background-color: #171717;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 48px;
+  column-gap: 128px;
+}
+.footerSubSectionContainer {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+.footerPoint {
+  font-family: var(--Futura);
+  color: #979797;
+  font-size: 16px;
+}
+.footerPoint:first-child {
+  color: white;
+}
+.footerPoint:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.footerPoint:first-child:hover {
+  text-decoration: none;
+  cursor: default;
+}

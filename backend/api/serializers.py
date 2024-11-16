@@ -5,22 +5,38 @@ from rest_framework import serializers
 from .models import CustomUser
 
 # Serializer for retrieving user details (used in views for getting user info)
+from rest_framework import serializers
+from .models import CustomUser
+
+# General serializer for retrieving user details
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ["id", "username", "first_name", "last_name", "profile_picture"]
+        fields = ["id", "username", "email", "first_name", "last_name", "profile_picture"]
+        extra_kwargs = {
+            'email': {'required': True},  # Ensure email is required when updating
+        }
 
-# Serializer for user signup (used in the signup view)
+# Serializer for user signup
 class CustomUserSignupSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['username', 'password', 'profile_picture']
-        extra_kwargs = {'password': {'write_only': True}}
+        fields = ["username", "password", "email", "profile_picture"]
+        extra_kwargs = {
+            "password": {"write_only": True},  # Hide password in responses
+            "email": {"required": True},  # Email is required for signup
+        }
 
     def create(self, validated_data):
-        # Create a user with the hashed password
-        user = CustomUser.objects.create_user(**validated_data)
+        # Explicitly pass validated data to create a user
+        user = CustomUser.objects.create_user(
+            username=validated_data["username"],
+            email=validated_data["email"],
+            password=validated_data["password"],
+            profile_picture=validated_data.get("profile_picture"),
+        )
         return user
+
 
 
 class TransactionsSerializer(serializers.ModelSerializer):

@@ -46,6 +46,7 @@ class RemindersCreateView(APIView):
 @api_view(['POST'])
 @permission_classes([AllowAny]) 
 def signup(request):
+    print(request.data)
     serializer = CustomUserSignupSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()

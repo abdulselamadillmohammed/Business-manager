@@ -66,7 +66,7 @@ export default function LoginPage({ setToken }) {
           <p className={styles.lowerInputLabel}>Please enter your password</p>
         </div>
         <button className={styles.loginFormButton} type="submit">
-          Login
+          Log in
         </button>
 
         <p className={styles.forgotPasswordRedirect}>Forgot Password?</p>
