@@ -10,6 +10,9 @@ from rest_framework.decorators import api_view,permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 
+import random
+from datetime import datetime, timedelta
+
 # Create your views here.
 
 class TransactionsListView(APIView):
@@ -65,9 +68,6 @@ class UpdateUserView(APIView):
     parser_classes = [MultiPartParser, FormParser]
 
     def patch(self, request):
-        print(f"Incoming request data: {request.data}")
-        print(f"Files: {request.FILES}")
-
         user = request.user
         serializer = CustomUserSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():

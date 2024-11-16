@@ -48,6 +48,28 @@
 .timeRangeSelector {
   display: flex;
   gap: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  padding-right: 12px;
+}
+
+.chartTypeSelector {
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  padding-right: 12px;
+}
+.dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
+  border-radius: 16px;
+  padding-right: 10px;
+  font-family: var(--FuturaNormal);
+}
+.dropdown:focus {
+  border: none;
+  outline: none;
 }
 
 .activeButton {
@@ -69,5 +91,15 @@
 }
 
 .chartContainer {
-  margin-top: 20px;
+  margin-top: 40px;
+  overflow-x: scroll; /* Make the chart scrollable horizontally */
+  font-family: var(--Futura);
+}
+.chartWrapper {
+  font-family: var(--Futura);
+  height: 500px;
+}
+
+.chartComponentTest {
+  min-height: 450px;
 }

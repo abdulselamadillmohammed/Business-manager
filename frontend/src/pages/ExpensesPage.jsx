@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   LineChart,
   Line,
@@ -8,55 +8,123 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
 } from "recharts";
-import { useCurrentUser, useAllTransactions } from "../services/queries"; // Assuming these queries exist
+import { useCurrentUser, useAllTransactions } from "../services/queries";
 import styles from "../assets/css/expensesPage.module.css";
 import DashboardSidebar from "../components/DashboardSidebar";
+import dayjs from "dayjs";
 
 export default function ExpensesPage() {
   const token = localStorage.getItem("accessToken");
 
-  // Fetch user and transactions data
   const {
     data: user,
     isLoading: userIsLoading,
     isError: userIsError,
   } = useCurrentUser(token);
+
   const {
     data: transactions,
     isLoading: transactionsLoading,
     isError: transactionsError,
   } = useAllTransactions();
-  console.log(transactions);
 
-  // Local states
   const [chartType, setChartType] = useState("line");
   const [timeRange, setTimeRange] = useState("week");
 
-  // Handlers
-  const handleChartTypeChange = (type) => {
-    setChartType(type);
-  };
+  const filteredData = useMemo(() => {
+    if (!transactions) return [];
 
-  const handleTimeRangeChange = (range) => {
-    setTimeRange(range);
-  };
+    const now = dayjs();
+    let startDate;
+    let dateFormat;
 
-  // Render loading/error states
+    switch (timeRange) {
+      case "day":
+        startDate = now.subtract(1, "day");
+        dateFormat = "h A";
+        break;
+      case "week":
+        startDate = now.subtract(7, "days");
+        dateFormat = "dddd";
+        break;
+      case "month":
+        startDate = now.subtract(1, "month");
+        dateFormat = "MMM D";
+        break;
+      case "year":
+        startDate = now.subtract(1, "year");
+        dateFormat = "MMMM";
+        break;
+      case "all":
+      default:
+        startDate = null; // No start date, include all transactions
+        dateFormat = "MMM YYYY";
+        break;
+    }
+
+    let filteredTransactions = transactions.filter(
+      (txn) => txn.transaction_type === "E"
+    );
+    if (startDate) {
+      filteredTransactions = filteredTransactions.filter((txn) =>
+        dayjs(txn.created_at).isAfter(startDate)
+      );
+    }
+
+    const aggregatedData = filteredTransactions.reduce((acc, txn) => {
+      let dateKey;
+      let dateLabel;
+      const amount = parseFloat(txn.transaction_price);
+
+      if (timeRange === "day") {
+        dateKey = dayjs(txn.created_at).format("HH"); // Hour in 24h format
+        dateLabel = dayjs(txn.created_at).format("h A"); // For display
+      } else {
+        dateKey = dayjs(txn.created_at).format(dateFormat);
+        dateLabel = dateKey;
+      }
+
+      if (acc[dateKey]) {
+        acc[dateKey].amount += amount;
+      } else {
+        acc[dateKey] = { dateKey, dateLabel, amount };
+      }
+
+      return acc;
+    }, {});
+
+    const dataArray = Object.values(aggregatedData);
+
+    // Custom sorting for days of the week and day timeRange
+    if (timeRange === "week") {
+      const dayOrder = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      dataArray.sort(
+        (a, b) => dayOrder.indexOf(a.dateLabel) - dayOrder.indexOf(b.dateLabel)
+      );
+    } else if (timeRange === "day") {
+      dataArray.sort((a, b) => parseInt(a.dateKey) - parseInt(b.dateKey));
+    } else {
+      // Default sorting for other cases
+      dataArray.sort(
+        (a, b) => dayjs(a.dateKey, dateFormat) - dayjs(b.dateKey, dateFormat)
+      );
+    }
+
+    return dataArray;
+  }, [transactions, timeRange]);
+
   if (userIsLoading || transactionsLoading) return <p>Loading...</p>;
   if (userIsError) return <p>Error fetching user data</p>;
   if (transactionsError) return <p>Error fetching transactions</p>;
-
-  const sampleData = [
-    { date: "2024-01-01", amount: 10 },
-    { date: "2024-01-02", amount: 25 },
-    { date: "2024-01-03", amount: 15 },
-    { date: "2024-01-04", amount: 45 },
-    { date: "2024-01-05", amount: 35 },
-    { date: "2024-01-06", amount: 60 },
-    { date: "2024-01-07", amount: 105 },
-  ];
 
   const renderChart = () => {
     const ChartComponent = chartType === "line" ? LineChart : BarChart;
@@ -71,20 +139,56 @@ export default function ExpensesPage() {
       ) : (
         <Bar dataKey="amount" fill="#8884d8" />
       );
+
     return (
-      <ChartComponent
-        width={800}
-        height={400}
-        data={sampleData}
-        margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        {DataComponent}
-      </ChartComponent>
+      <div className={styles.chartWrapper}>
+        <ChartComponent
+          className={styles.chartComponentTest}
+          width={1000}
+          height={400}
+          data={filteredData} // Ensure the data is sorted correctly
+          margin={{ top: 20, right: 30, left: 20, bottom: 50 }} // Increase the bottom margin
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="dateLabel"
+            interval={0}
+            angle={
+              timeRange === "day" ||
+              timeRange === "month" ||
+              timeRange === "all"
+                ? 90
+                : 0
+            }
+            textAnchor={
+              timeRange === "day" ||
+              timeRange === "month" ||
+              timeRange === "all"
+                ? "start"
+                : "end"
+            }
+            tick={{ dy: 10 }} // Add padding to move the labels down
+          />
+          <YAxis
+            tickFormatter={(value) => Number(value).toFixed(2)}
+            label={{
+              value: "Amount",
+              angle: -90,
+              position: "insideLeft",
+              offset: -10, // Adjust this value as needed
+              style: {
+                textAnchor: "middle",
+                fontSize: "14px",
+                fill: "#8884d8",
+              },
+            }}
+          />
+
+          <Tooltip formatter={(value) => Number(value).toFixed(2)} />
+
+          {DataComponent}
+        </ChartComponent>
+      </div>
     );
   };
 
@@ -100,14 +204,11 @@ export default function ExpensesPage() {
         <h1 className={styles.heading}>Expenses</h1>
         <div className={styles.controlsContainer}>
           <div className={styles.chartTypeSelector}>
-            <label htmlFor="chartType" className={styles.dropdownLabel}>
-              Select Chart Type:
-            </label>
             <select
               id="chartType"
               className={styles.dropdown}
               value={chartType}
-              onChange={(e) => handleChartTypeChange(e.target.value)}
+              onChange={(e) => setChartType(e.target.value)}
             >
               <option value="line">Line Chart</option>
               <option value="bar">Bar Chart</option>
@@ -115,49 +216,28 @@ export default function ExpensesPage() {
           </div>
 
           <div className={styles.timeRangeSelector}>
-            <button
-              className={
-                timeRange === "day"
-                  ? styles.activeButton
-                  : styles.inactiveButton
-              }
-              onClick={() => handleTimeRangeChange("day")}
+            <select
+              className={styles.dropdown}
+              value={timeRange}
+              onChange={(e) => setTimeRange(e.target.value)}
             >
-              Past Day
-            </button>
-            <button
-              className={
-                timeRange === "week"
-                  ? styles.activeButton
-                  : styles.inactiveButton
-              }
-              onClick={() => handleTimeRangeChange("week")}
-            >
-              Past Week
-            </button>
-            <button
-              className={
-                timeRange === "year"
-                  ? styles.activeButton
-                  : styles.inactiveButton
-              }
-              onClick={() => handleTimeRangeChange("year")}
-            >
-              Past Year
-            </button>
-            <button
-              className={
-                timeRange === "all"
-                  ? styles.activeButton
-                  : styles.inactiveButton
-              }
-              onClick={() => handleTimeRangeChange("all")}
-            >
-              All Time
-            </button>
+              <option value="day">Past Day</option>
+              <option value="week">Past Week</option>
+              <option value="month">Past Month</option>
+              <option value="year">Past Year</option>
+              <option value="all">All Time</option>
+            </select>
           </div>
         </div>
-        <div className={styles.chartContainer}>{renderChart()}</div>
+        <div
+          className={styles.chartContainer}
+          style={{
+            overflowX: "scroll", // Enable scrolling for the X-axis
+            display: "block",
+          }}
+        >
+          {renderChart()}
+        </div>
       </div>
     </div>
   );
