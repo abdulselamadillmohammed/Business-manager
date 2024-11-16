@@ -1,3 +1,4 @@
+import "./index.css";
 import React, { useState } from "react"; // Import useState
 import { Route, Routes } from "react-router-dom";
 import SignupPage from "./pages/SignupPage";
@@ -13,8 +14,11 @@ function App() {
   return (
     <Routes>
       <Route path="/signup" element={<SignupPage />} />
+
       <Route path="/login" element={<LoginPage setToken={setToken} />} />
+
       <Route path="/dashboard" element={<DashboardPage />} />
+
       <Route path="/transactions" element={<TransactionsPage />} />
       <Route path="/settings" element={<SettingsPage />} />
       <Route path="/logout" element={<LogoutPage />} />

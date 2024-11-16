@@ -1,0 +1,8 @@
+/* Ensure the html and body elements fill the entire viewport */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Add other global styles you want to apply globally */
