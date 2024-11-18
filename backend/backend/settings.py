@@ -13,7 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,12 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-21%v1al59@s446=gg&8tq36im#lq)8!nvydox7@bi#)fj&k&=#'
+# SECRET_KEY = 'django-insecure-21%v1al59@s446=gg&8tq36im#lq)8!nvydox7@bi#)fj&k&=#'
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 
 # Application definition
@@ -105,11 +111,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DATABASE_NAME','business_manager_db'),
-        "USER": os.environ.get('DATABASE_USER','postgres'),
-        "PASSWORD": os.environ.get('DATABASE_PASSWORD','postgres'),
-        "HOST": os.environ.get('DATABASE_HOST','localhost'),
-        "PORT": os.environ.get('DATABASE_PORT','5434')
+        'NAME': os.getenv('DATABASE_NAME', 'business_manager_db'),
+        'USER': os.getenv('DATABASE_USER', 'postgres'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'postgres'),
+        'HOST': os.getenv('DATABASE_HOST', 'localhost'),
+        'PORT': os.getenv('DATABASE_PORT', '5434'),
     }
 }
 
