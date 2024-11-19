@@ -44,8 +44,7 @@ class Transaction(models.Model):
     transaction_price = models.DecimalField(max_digits=7, decimal_places=2)
 
     modified_at = models.DateTimeField(auto_now=True)
-    #created_at = models.DateTimeField(auto_now_add=True)
-    created_at = models.DateTimeField()  # Removed auto_now_add=True
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):
