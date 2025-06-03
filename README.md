@@ -1,5 +1,5 @@
 # Business Manager
-(In progress)
+
 **Business Manager** is a web application designed to help users track their expenses and revenue streams, providing insightful visualizations to monitor financial performance. The app is built using **React** for the front end and **Django** for the back end. It also includes features like **Redux** for state management, **TanStack Query** for client-side caching, and **Redis** for backend caching.
 
 ## Features
@@ -107,3 +107,4 @@ The backend will now be available at `http://localhost:8000`.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
