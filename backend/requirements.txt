@@ -12,3 +12,5 @@ django-redis
 redis
 pillow
 gunicorn
+boto3
+django-storages
